@@ -9,7 +9,15 @@ extern uint32_t cut_get_tick(void);
 extern uint32_t cut_get_sys_time(void);
 extern uint32_t cut_calc_tick_span(uint32_t start_tick, uint32_t end_tick);
 extern uint32_t cut_clac_sys_time_span(uint32_t start_time, uint32_t end_time);
+
 static struct cut_context_t cut_context;
+
+char *task_description[] =
+    {
+#define TASK_DEFINE(task) #task,
+        TASK_TABLE
+#undef TASK_DEFINE
+};
 
 void cut_init(void)
 {

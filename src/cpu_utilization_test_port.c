@@ -2,16 +2,6 @@
 
 #ifdef CUT_TEST
 
-// 任务描述（用于报告打印）
-char *task_description[] =
-    {
-#define TASK_DEFINE(task) #task,
-        TASK_TABLE
-#undef TASK_DEFINE
-};
-
-extern uint32 Timer1ms;
-
 /// @brief 定时器开启
 /// @param
 void cut_timer_start(void)

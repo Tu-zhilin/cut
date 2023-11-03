@@ -5,6 +5,8 @@
 #include "SEGGER_RTT.h"
 #include "cpu_utilization_test_cfg.h"
 
+#ifdef CUT_TEST
+
 #define TASK_NEST_MAX_DEEP TASK_NUM                                  // 任务嵌套深度
 #define CUT_TEST_REIMBURSED_TIME (CUT_GPT_TIMER_PERIOD / 1000000)    // 时间补偿(定时器时钟频率 / 10000000)
 #define CUT_TEST_NEST_REIMBURSED_TIME CUT_TEST_REIMBURSED_TIME * 1.5 // 嵌套时间补偿(定时器时钟频率 / 10000000 * 1.5)
@@ -13,7 +15,7 @@ enum task_name_t
 {
 #define TASK_DEFINE(task) task,
     TASK_TABLE
-#undef
+#undef TASK_DEFINE
         TASK_NUM
 };
 
@@ -47,6 +49,9 @@ extern void cut_start(void);
 extern void cut_stop(void);
 extern void cut_task_entry(enum task_name_t task);
 extern void cut_task_leave(enum task_name_t task);
+extern char *task_description[];
+
+#endif
 
 /* Pubilc API*/
 #ifdef CUT_TEST
